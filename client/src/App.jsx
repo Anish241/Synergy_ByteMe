@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import "./App.css";
 import { Admin, Home, Login, User } from "./pages";
 import { Navbar,Footer } from "./components";
+import { Form } from "./pages/Bank";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Route path="/login" element={<Login />} /> 
           <Route path="/admin" element={<Admin />} /> 
           <Route path="/user" element={<User />} /> 
+          <Route path="/bankform" element={<Form />} />
         </Routes>
       </Router>
     </AnimatePresence>

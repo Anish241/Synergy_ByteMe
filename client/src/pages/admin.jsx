@@ -1,8 +1,11 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Navbar, Footer } from "../components";
 import { AdminTable,Dashboard } from "../components";
 
 //Expected bank data to be passed to table
+
+
+
 const sample = [
     {
         bankName: "ICICI",

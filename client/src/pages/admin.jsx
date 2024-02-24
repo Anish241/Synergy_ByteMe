@@ -1,5 +1,6 @@
 import React from "react";
-import { AdminTable } from "../components";
+import { Navbar, Footer } from "../components";
+import { AdminTable,Dashboard } from "../components";
 
 //Expected bank data to be passed to table
 const sample = [
@@ -18,9 +19,13 @@ const sample = [
 export default function Admin(){
 
     return(
-        <div className="centerflex coverfullscreen">
-            <AdminTable banks={sample}/>
-        </div>
+        <>
+            <Dashboard/>
+            <div className="centerflex coverfullscreen backgroundcol-black">
+                <AdminTable banks={sample}/>
+            </div>
+        </>
+        
     );
     
 }

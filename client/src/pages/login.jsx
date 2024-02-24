@@ -40,7 +40,7 @@ export default function Login(){
                     </CardContent>   
 
                     <CardActions>
-                        <Button size="small" href="/login">Submit</Button>
+                        <Button size="small" href="/admin">Submit</Button>
                     </CardActions> 
                 </Card>
             </Box>

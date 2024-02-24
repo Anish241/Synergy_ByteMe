@@ -60,6 +60,7 @@ export default function AdminTable(props) {
                     handleClose={handleClose} 
                     bankName={bankName} 
                     bankReg={bankReg}
+                    bankWallet={bankWallet}
                 />
             }
         </TableContainer>

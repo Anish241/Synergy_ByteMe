@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import { rejectBankRequest,acceptBankRequest } from "../../api/Admin";
 
 const style = {
     position: 'absolute',
@@ -19,6 +20,17 @@ const style = {
 
 function VerifyModal(props){
 
+    const handleAccept = async () => {
+        await acceptBankRequest(props.bankWallet);
+
+    
+    };
+
+    const handleReject = async () => {
+        await rejectBankRequest(props.bankWallet);
+    }
+
+
     return(
         <Modal open={props.open} onClose={props.handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
             <Card sx={style}>
@@ -29,10 +41,17 @@ function VerifyModal(props){
                     <Typography variant="body2" color="text.secondary">
                     Bank registraion number: {props.bankReg}
                     </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                    Bank wallet address: {props.bankWallet}
+                    </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Accept request</Button>
-                    <Button size="small">Reject request</Button>
+                    <Button size="small"
+                    onClick={handleAccept}
+                    >Accept request</Button>
+                    <Button size="small"
+                    onClick={handleReject}
+                    >Reject request</Button>
                 </CardActions>
                 </Card>
 

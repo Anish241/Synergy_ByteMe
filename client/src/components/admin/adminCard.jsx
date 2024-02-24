@@ -30,9 +30,9 @@ const PendingRequestsCard = ({ pendingRequests }) => (
   </Card>
 );
 
-const Dashboard = () => {
-  const totalCustomers = 1000; // Replace with actual data
-  const pendingRequests = 20; // Replace with actual data
+const Dashboard = ({totalCustoms,pendingReq}) => {
+  const totalCustomers = totalCustoms; // Replace with actual data
+  const pendingRequests = pendingReq; // Replace with actual data
 
   return (
     <div className='backgroundcol-black'>

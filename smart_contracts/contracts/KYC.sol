@@ -65,13 +65,6 @@ contract KYC {
     function verifyBank(address _address) public onlyAdmin {
         banks[_address].isVerified = true;
         bankCount++;
-        for (uint i = 0; i < bankRequests.length; i++) {
-            if (bankRequests[i] == _address) {
-                bankRequests[i] = bankRequests[bankRequests.length - 1];
-                bankRequests.pop();
-                break;
-            }
-        }
     }
 
     function addCustomer(address _address) public onlyBank {
@@ -89,7 +82,9 @@ contract KYC {
     function getBankRequestsAllData() public view onlyAdmin returns (Bank [] memory) {
         Bank[] memory result = new Bank[](bankRequests.length);
         for (uint i = 0; i < bankRequests.length; i++) {
-            result[i] = banks[bankRequests[i]];
+            if (!banks[bankRequests[i]].isVerified) {
+                result[i] = banks[bankRequests[i]];
+            }
         }
         return result;
     }

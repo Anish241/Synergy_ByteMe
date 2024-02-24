@@ -1,6 +1,6 @@
 const main = async () => {
     const kycFactory = await hre.ethers.getContractFactory("KYC");
-    const kycContract = await kycFactoryFactory.deploy();
+    const kycContract = await kycFactory.deploy("qwert123");
   
     await kycContract.deployed();
   

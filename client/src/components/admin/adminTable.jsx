@@ -7,13 +7,13 @@ export default function AdminTable(props) {
 
     return (
         <TableContainer component={Box} className='centerflex'>
-        <Table sx={{ maxWidth: "50rem" }} aria-label="simple table" component={Paper} elevation={4}>
+        <Table sx={{ maxWidth: "50rem", minWidth:"35rem" }} aria-label="simple table" component={Paper} elevation={4}>
             <TableHead>
-            <TableRow>
-                <TableCell>Bank Rg Num</TableCell>
-                <TableCell align="right">Bank Name</TableCell>
-                <TableCell align="right">Wallet</TableCell>
-            </TableRow>
+                <TableRow>
+                    <TableCell>Bank Rg Num</TableCell>
+                    <TableCell align="right">Bank Name</TableCell>
+                    <TableCell align="right">Wallet</TableCell>
+                </TableRow>
             </TableHead>
 
             <TableBody>
@@ -21,7 +21,7 @@ export default function AdminTable(props) {
                 <TableRow
                 key={bank.bankRegNum}
                 >
-                <TableCell component="th" scope="row">
+                <TableCell >
                     {bank.bankRegNum}
                 </TableCell>
                 <TableCell align="right">{bank.bankName}</TableCell>

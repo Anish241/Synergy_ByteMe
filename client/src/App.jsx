@@ -3,7 +3,7 @@ import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
 import { AnimatePresence } from 'framer-motion';
 import "./App.css";
 import { Admin, Home, Login, User } from "./pages";
-import { Navbar,Footer } from "./components";
+// import { Navbar,Footer } from "./components";
 
 function App() {
 

@@ -112,3 +112,7 @@ body {
     flex-direction: column;
     justify-content:space-around;
 }
+
+.child-margin > *> *{
+  margin: 2rem;
+}

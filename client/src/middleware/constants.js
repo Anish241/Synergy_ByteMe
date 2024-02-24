@@ -2,6 +2,6 @@ import abi from "./KYC.json"
 
 const KYCABI = abi.abi;
 
-const KYCAddress = "0xd1e8A144Be302242E85708A513c3160252cac694";
+const KYCAddress = "0x81022343A1E0562A135b64e09B8919b37309e630";
 
 export { KYCABI, KYCAddress };

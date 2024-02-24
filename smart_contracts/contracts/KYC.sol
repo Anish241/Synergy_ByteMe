@@ -144,6 +144,13 @@ contract KYC {
         customers[_address].balance = _balance;
     }
     
+    function bankLogin (address _address) public view returns (string memory, string memory,  string memory, string memory, string memory) {
+        require(banks[_address].bankAddress == _address, "Only bank can call this function");
+        require(banks[_address].isVerified, "Bank not verified");
+        return (banks[_address].bankName, banks[_address].regNumber, string(abi.encodePacked(banks[_address].customers.length)), string(abi.encodePacked(banks[_address].bankAddress)), string(abi.encodePacked(banks[_address].customers.length)));
+    }
+
+
     // Transactions contract
     struct Transaction{
         address from;

@@ -4,7 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import "./App.css";
 import { Admin, Home, Login, User } from "./pages";
 import { Navbar,Footer } from "./components";
-import { Form,Dash } from "./pages/Bank";
+import { Form,Dash,Login_Bank } from "./pages/Bank";
 // import { Navbar,Footer } from "./components";
 
 function App() {
@@ -19,6 +19,8 @@ function App() {
           <Route path="/user" element={<User />} /> 
           <Route path="/bankform" element={<Form />} />
           <Route path="/bankdash" element={<Dash />} />
+          <Route path = "/banklogin" element={<Login_Bank />} />
+          <Route path="*" element={<div>404</div>} />
 
         </Routes>
       </Router>

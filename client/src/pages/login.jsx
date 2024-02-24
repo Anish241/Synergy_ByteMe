@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import {Box, Card, CardContent, CardActions, TextField, Typography, Button} from '@mui/material';
 
+import { verify } from "../api/Login";
+
 export default function Login(){
 
     const boxStyle = {
@@ -19,6 +21,17 @@ export default function Login(){
     const handleChange = (event) => setPass(event.target.value);
 
     console.log(pass)
+
+    const onSubmit = async () => {
+        const isVerified = await verify(pass);
+        if(isVerified){
+            window.location.href = "/admin";
+        }
+        else{
+            alert("Incorrect Password");
+        }
+        
+    }
 
     //NOTE TO ANISH : typing the paassword automatically changes it in "pass" variable defined above
     //Clicking the button will reload the page, hence reset the password
@@ -40,7 +53,9 @@ export default function Login(){
                     </CardContent>   
 
                     <CardActions>
-                        <Button size="small" href="/admin">Submit</Button>
+                        <Button size="small" 
+                         onClick = {onSubmit}
+                        >Submit</Button>
                     </CardActions> 
                 </Card>
             </Box>

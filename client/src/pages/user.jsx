@@ -100,5 +100,9 @@ export default function User(){
                 <UserTable transactions={sampleTransactions}/>
             </div>
         </div>
-    )
+      </div>
+      <div id="usertable">
+      </div>
+    </>
+  );
 }

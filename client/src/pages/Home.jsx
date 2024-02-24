@@ -1,7 +1,6 @@
 import React from "react";
 import { Navbar, Footer } from "../components";
 import { Fragment } from "react";
-import Admin from "../components/admin/adminCard";
 
 const Home = () => {
   return (

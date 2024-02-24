@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Paper,TableRow,TableHead, TableContainer, TableCell, TableBody, Table, Box } from '@mui/material';
+import {Paper,TableRow,TableHead, TableContainer, TableCell, TableBody, Table } from '@mui/material';
 
 
 export default function UserTable(props) {
@@ -21,9 +21,9 @@ export default function UserTable(props) {
         <Table sx={tableStyle} className='white-glassmorphism' aria-label="simple table"  elevation={4}>
             <TableHead>
             <TableRow>
-                <TableCell>To</TableCell>
-                <TableCell align="right">From</TableCell>
-                <TableCell align="right">Amount</TableCell>
+                <TableCell> <b>To</b> </TableCell>
+                <TableCell align="right"><b>From</b></TableCell>
+                <TableCell align="right"><b>Amount</b></TableCell>
             </TableRow>
             </TableHead>
 

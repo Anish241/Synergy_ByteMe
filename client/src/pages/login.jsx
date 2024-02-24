@@ -4,6 +4,8 @@ import {Box, Card, CardContent, CardActions, TextField, Typography, Button} from
 
 import { verify } from "../api/Login";
 
+import toast from "react-hot-toast";
+
 export default function Login(){
 
     const boxStyle = {
@@ -28,7 +30,7 @@ export default function Login(){
             window.location.href = "/admin";
         }
         else{
-            alert("Incorrect Password");
+            toast.error("Invalid Password");
         }
         
     }

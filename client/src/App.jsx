@@ -5,6 +5,7 @@ import "./App.css";
 import { Admin, CustomerRegistration, Home, Login, User } from "./pages";
 import { Navbar,Footer } from "./components";
 import { Form,Dash,Login_Bank } from "./pages/Bank";
+import {Toaster} from "react-hot-toast";
 // import { Navbar,Footer } from "./components";
 
 function App() {
@@ -23,7 +24,9 @@ function App() {
           <Route path="*" element={<div>404</div>} />
           <Route path="/customerreg" element={<CustomerRegistration/>} />
         </Routes>
+        <Toaster/>
       </Router>
+
     </AnimatePresence>
   );
 }

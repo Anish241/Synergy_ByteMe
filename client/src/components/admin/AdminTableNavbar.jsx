@@ -10,6 +10,8 @@ export default function AdminTableNavbar(props) {
     const handleChange = (event, newValue) => {
     setValue(newValue);
     props.setTableData(value===0?props.pending:props.registered)
+    props.setIsVerified(value===0?false:true)
+    
   };
 
   return (

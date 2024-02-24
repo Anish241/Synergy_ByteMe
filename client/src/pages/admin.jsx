@@ -35,17 +35,22 @@ export default function Admin(){
     ]
 
     const[tableData,setTableData] = useState([]);
+    const[isVerified,setIsVerified] = useState(null);
+
+    console.log(isVerified)
 
     return(
         <>
             <Dashboard/>
             <div className="centerflex coverfullscreen backgroundcol-black flex-col">
                 <div>
-                    <AdminTableNavbar setTableData={setTableData}
+                    <AdminTableNavbar 
+                    setIsVerified={setIsVerified}
+                    setTableData={setTableData}
                     pending={pending}
                     registered={registered}/>
-                    
-                    <AdminTable banks={tableData}/>
+
+                    <AdminTable banks={tableData} isVerified={isVerified}/>
                 </div>
             </div>
         </>

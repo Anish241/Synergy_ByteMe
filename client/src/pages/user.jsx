@@ -66,7 +66,7 @@ export default function User(){
     //On clicking the submit button, thsi function will log the data as an array of the form [to, from, amt]
     const submitTransaction = (event) =>{
         console.log(event.target.value);
-        // window.location.reload();
+        window.location.reload();
     }
 
     //Handling state change in modal input fields as form control is not possible as of now in modals
@@ -100,9 +100,5 @@ export default function User(){
                 <UserTable transactions={sampleTransactions}/>
             </div>
         </div>
-      </div>
-      <div id="usertable">
-      </div>
-    </>
   );
 }

@@ -1,3 +1,5 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-export {Navbar,Footer};
+import AdminTable from "./admin/adminPendingTable";
+
+export {Navbar,Footer, AdminTable};

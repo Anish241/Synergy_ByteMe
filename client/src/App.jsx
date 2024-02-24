@@ -5,6 +5,7 @@ import "./App.css";
 import { Admin, Home, Login, User } from "./pages";
 import { Navbar,Footer } from "./components";
 import { Form } from "./pages/Bank";
+// import { Navbar,Footer } from "./components";
 
 function App() {
 

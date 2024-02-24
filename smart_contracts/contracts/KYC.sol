@@ -89,7 +89,16 @@ contract KYC {
         return result;
     }
 
-    function getVerifiedBanks () public view onlyAdmin returns (Bank [] memory) {
+    function getCustomersinABank (address _address) public view onlyBank returns (Customer [] memory) {
+        Customer[] memory result = new Customer[](banks[_address].customers.length);
+        for (uint i = 0; i < banks[_address].customers.length; i++) {
+            result[i] = customers[banks[_address].customers[i]];
+        }
+        return result;
+       
+    }
+
+    function getVerifiedBanks () public view returns (Bank [] memory) {
         Bank[] memory result = new Bank[](bankCount);
         uint256 counter = 0;
         for (uint i = 0; i < bankRequests.length; i++) {
@@ -101,13 +110,6 @@ contract KYC {
         return result;
     }
 
-    function getBankCount() public view onlyAdmin returns (uint256) {
-        return bankCount;
-    }
-
-    function getBankRequestsCount() public view onlyAdmin returns (uint256) {
-        return bankRequests.length;
-    }
     
     // Customer contract
     struct Customer{
@@ -197,13 +199,8 @@ contract KYC {
         }
     }
 
-    function removeBank(address _address) public onlyAdmin {
-        delete banks[_address];
-    }
 
-    function removeCustomer(address _address) public onlyAdmin {
-        delete customers[_address];
-    }
+ 
 
     function rejectCustomer(address _address) public onlyBank {
         customers[_address].isVerified = "false";

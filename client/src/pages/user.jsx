@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { UserTable, UserModal } from "../components";
+import { UserTable, UserModal, UserCard } from "../components";
 import { Navbar, Footer } from "../components";
 import { Button } from "@mui/material";
-import Usercard from "../components/user/UserCard";
 import DetailCard from "../components/user/UserDetailCard";
 
 export default function User() {
@@ -42,7 +41,7 @@ export default function User() {
           className="grid grid-cols-1 md:grid-cols-2"
         >
           <div>
-            <Usercard />
+            <UserCard />
           </div>
           <div>
             <DetailCard />

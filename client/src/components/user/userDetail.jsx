@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const UserCard = ({ userName, bankName, bankBranch, walletAddress, image }) => {
   return (
-    <div className="bg-white border border-gray-300 rounded-md p-6 shadow-md white-glassmorphism">
+    <div className=" rounded-md p-6 shadow-md white-glassmorphism">
       {image && <img src={image} alt="User" className="rounded-full mx-auto mb-4 w-32 h-32" />}
       <div className="text-white">
         <div className="mb-2">

@@ -1,32 +1,52 @@
-import React,{useEffect} from "react";
-import { Navbar, Footer } from "../components";
+import React,{useState} from "react";
 // import { Navbar, Footer } from "../components";
-import { AdminTable,Dashboard } from "../components";
+import { AdminTable,Dashboard, AdminTableNavbar } from "../components";
 
 //Expected bank data to be passed to table
 
 
 
-const sample = [
-    {
-        bankName: "ICICI",
-        bankRegNum:"123",
-        bankWallet:"cwebcwkes"
-    },
-    {
-        bankName: "SBI",
-        bankRegNum:"123",
-        bankWallet:"cwebcwkes"
-    },
-]
-
 export default function Admin(){
+
+    const registered = [
+        {
+            bankName: "ICICI",
+            bankRegNum:"123",
+            bankWallet:"cwebcwkes"
+        },
+        {
+            bankName: "SBI",
+            bankRegNum:"456",
+            bankWallet:"cwebcwkes"
+        },
+    ]
+
+    const pending = [
+        {
+            bankName: "RBI",
+            bankRegNum:"789",
+            bankWallet:"csecvr"
+        },
+        {
+            bankName: "HDFC",
+            bankRegNum:"852",
+            bankWallet:"nvfnv"
+        },
+    ]
+
+    const[tableData,setTableData] = useState([]);
 
     return(
         <>
             <Dashboard/>
-            <div className="centerflex coverfullscreen backgroundcol-black">
-                <AdminTable banks={sample}/>
+            <div className="centerflex coverfullscreen backgroundcol-black flex-col">
+                <div>
+                    <AdminTableNavbar setTableData={setTableData}
+                    pending={pending}
+                    registered={registered}/>
+                    
+                    <AdminTable banks={tableData}/>
+                </div>
             </div>
         </>
         

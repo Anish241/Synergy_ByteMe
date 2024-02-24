@@ -6,10 +6,10 @@ import Admin from "../components/admin/adminCard";
 const Home = () => {
   return (
     <Fragment>
-      <div className="min-h-screen">
+      <div className="min-h-screen backgroundcol-black">
         
           <Navbar />
-           <Admin />
+           {/* <Admin /> HERO SECTION */}
           <Footer />
         
       </div>

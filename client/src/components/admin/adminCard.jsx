@@ -35,10 +35,12 @@ const Dashboard = () => {
   const pendingRequests = 20; // Replace with actual data
 
   return (
-    <Box display="flex" gap={2}>
-      <CustomerCard totalCustomers={totalCustomers} />
-      <PendingRequestsCard pendingRequests={pendingRequests} />
-    </Box>
+    <div className='backgroundcol-black'>
+      <Box display="flex" gap={2} justifyContent={"space-around"} >
+        <CustomerCard totalCustomers={totalCustomers} />
+        <PendingRequestsCard pendingRequests={pendingRequests} />
+      </Box>
+    </div>
   );
 };
 

@@ -11,7 +11,7 @@ export default function UserTable(props) {
         borderRadius:"16px",
         backdropFilter:"blur(5px)",
         WebkitBackdropFilter:"blur(5px)", 
-        // border:"1px solid rgba(255, 255, 255, 0.3)",
+        // border:"1px solid rgba(255, 255, 255, 0.3)"
               
             
     }

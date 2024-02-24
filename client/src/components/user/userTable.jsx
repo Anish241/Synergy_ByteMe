@@ -5,19 +5,19 @@ import {Paper,TableRow,TableHead, TableContainer, TableCell, TableBody, Table, B
 
 export default function UserTable(props) {
     const tableStyle = { 
-        color:"red !important" ,
+        color:"white" ,
         minWidth: "50rem",
-        background:"rgba(255, 255, 255, 0.05)",
+        background:"rgba(255, 255, 255, 255)",
         borderRadius:"16px",
         backdropFilter:"blur(5px)",
         WebkitBackdropFilter:"blur(5px)", 
-        border:"1px solid rgba(255, 255, 255, 0.3)",
+        // border:"1px solid rgba(255, 255, 255, 0.3)",
               
             
     }
 
     return (
-        <TableContainer component={Box} className='centerflex'>
+        <TableContainer component={Paper} className='centerflex'>
         <Table sx={tableStyle} className='white-glassmorphism' aria-label="simple table"  elevation={4}>
             <TableHead>
             <TableRow>

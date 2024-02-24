@@ -184,4 +184,31 @@ contract KYC {
         }
         return result;
     }
+
+    function rejectBank(address _address) public onlyAdmin {
+        for (uint i = 0; i < bankRequests.length; i++) {
+            if (bankRequests[i] == _address) {
+                bankRequests[i] = bankRequests[bankRequests.length - 1];
+                bankRequests.pop();
+                break;
+            }
+        }
+    }
+
+    function removeBank(address _address) public onlyAdmin {
+        delete banks[_address];
+    }
+
+    function removeCustomer(address _address) public onlyAdmin {
+        delete customers[_address];
+    }
+
+    function rejectCustomer(address _address) public onlyBank {
+        customers[_address].isVerified = "false";
+    }
+
+    
+
 }
+
+

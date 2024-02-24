@@ -22,6 +22,10 @@ const sample = [
 
 export default function Admin(){
 
+    useEffect(()=>{
+        
+    },[]);
+
     return(
         <>
             <Dashboard/>

@@ -3,6 +3,8 @@
     grid-template-columns: repeat(3, 1fr);
     margin-top: 12px;
     gap: 16px;
+    padding-left: 200px;
+    padding-top: 40px;
   
     @media (max-width: 992px) {
       grid-template-columns: repeat(2, 1fr);
@@ -13,7 +15,6 @@
     }
   
     .area-card {
-      background-color: white;
       display: flex;
       align-items: center;
       border-radius: 5px;

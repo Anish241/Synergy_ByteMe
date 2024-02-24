@@ -19,4 +19,20 @@ const createBank = async (bankName,regNo) => {
     }
 };
 
-export {createBank}
+const BankLogin = async () => {
+    try {
+        const tx = await kycContract.bankLogin(provider.getSigner().getAddress());
+        console.log(tx);
+        localStorage.setItem("bank",tx);
+        return true;
+        
+    } catch (error) {
+        console.error(error);
+        alert("You are not a registered bank");
+        return false;
+
+        
+    }
+};
+
+export {createBank,BankLogin}

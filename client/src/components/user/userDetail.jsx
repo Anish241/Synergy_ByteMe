@@ -4,20 +4,24 @@ import PropTypes from "prop-types";
 const UserCard = ({ userName, bankName, bankBranch, walletAddress, image }) => {
   return (
     <div className=" rounded-md p-6 shadow-md white-glassmorphism">
-      {image && <img src={image} alt="User" className="rounded-full mx-auto mb-4 w-32 h-32" />}
+      {image && <img src={JSON.parse(localStorage.getItem("customer")).imageuri} alt="User" className="rounded-full mx-auto mb-4 w-32 h-32" />}
       <div className="text-white">
         <div className="mb-2">
-          <strong className="mr-2">User Name:</strong> {userName}
+          <strong className="mr-2">User Name:</strong> {JSON.parse(localStorage.getItem("customer")).name}
         </div>
         <div className="mb-2">
-          <strong className="mr-2">Bank Name:</strong> {bankName}
+          <strong className="mr-2">Bank Address:</strong> {JSON.parse(localStorage.getItem("customer")).bank}
         </div>
         <div className="mb-2">
-          <strong className="mr-2">Bank Branch:</strong> {bankBranch}
+          <strong className="mr-2">Aadhaar Number</strong> {JSON.parse(localStorage.getItem("customer")).aadhar}
         </div>
         <div>
-          <strong className="mr-2">Wallet Address:</strong> {walletAddress}
+          <strong className="mr-2">Pan Number</strong> {JSON.parse(localStorage.getItem("customer")).pan}
         </div>
+        <div>
+          <strong className="mr-2">Pincode</strong> {JSON.parse(localStorage.getItem("customer")).pincode}
+        </div>
+
       </div>
     </div>
   );

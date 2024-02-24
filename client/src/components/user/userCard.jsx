@@ -2,6 +2,8 @@ import AreaCard from "./AreaCard";
 import "./userCard.scss";
 
 const AreaCards = () => {
+  const data = JSON.parse(localStorage.getItem("customer"));
+
   return (
     <section className="content-area-cards ">
       <AreaCard
@@ -9,7 +11,7 @@ const AreaCards = () => {
         percentFillValue={80}
         cardInfo={{
           title: "Balance",
-          value: "₹ 10000",
+          value: `₹ ${JSON.parse(localStorage.getItem("customer")).balance}`,
           text: "Last 2 months transactions",
         }}
       />

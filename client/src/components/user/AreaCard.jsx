@@ -5,10 +5,32 @@ import {
   Cell,
   Tooltip,
 } from "recharts";
+import React, { useState } from "react";
+import Modal from "react-modal";
 
 const AreaCard = ({ colors, percentFillValue, cardInfo }) => {
   const filledValue = (percentFillValue / 100) * 360; 
   const remainedValue = 360 - filledValue;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [balance, setBalance] = useState("0");
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleBalanceChange = (e) => {
+    setBalance(e.target.value || "0");
+  };
+
+  const handleBalanceSubmit = () => {
+
+    closeModal();
+  };
 
   const data = [
     { name: "Remaining", value: remainedValue },
@@ -18,6 +40,31 @@ const AreaCard = ({ colors, percentFillValue, cardInfo }) => {
   const renderTooltipContent = (value) => {
     return `${(value / 360) * 100} %`;
   };
+
+  const customModalStyles = {
+    content: {
+      width: "300px",
+      height: "200px",
+      margin: "auto",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      padding: "20px",
+      borderRadius: "10px",
+      boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+      background: "linear-gradient(180deg, #FFFFFF 0%, #F8F9FC 100%)",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-around",
+      alignItems: "center",
+      position: "absolute", // Add position: "absolute"
+    },
+    overlay: {
+      background: "rgba(0, 0, 0, 0.5)",
+    },
+  };
+  
+  
 
   return (
     <div className="rounded-md p-6 shadow-md white-glassmorphism">
@@ -51,6 +98,7 @@ const AreaCard = ({ colors, percentFillValue, cardInfo }) => {
             <Tooltip formatter={renderTooltipContent} />
           </PieChart>
         </div>
+
       </div>
     </div>
   );

@@ -131,6 +131,7 @@ contract KYC {
     function createCustomer(string memory _name, string memory _email, string memory _password, string memory _data,address  _bankAddress,string memory _balance) public {
         require(customers[msg.sender].customerAddress != msg.sender, "Customer already exists");
         customers[msg.sender] = Customer(msg.sender, _name, _email, _password, _data,"false",_bankAddress,_balance);
+        banks[_bankAddress].customers.push(msg.sender);
     }
 
     function verifyCustomer(address _address) public onlyBank {

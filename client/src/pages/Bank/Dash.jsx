@@ -1,10 +1,13 @@
 // Dash.js
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Navbar, Footer } from '../../components';
 import illustration from '../../assets/illustration-intro.png';
 import { Fragment } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Switch, FormControlLabel, Table, TableBody, TableCell, TableContainer, TableRow, Paper } from '@mui/material';
 import './glassmorphicStyle.css';
+import { getKyCRequests } from '../../api/Bank';
+import { acceptCustomer } from '../../api/Customer';
+import axios from 'axios';
 
 const Dash = () => {
     const [showRequests, setShowRequests] = useState(true);
@@ -20,8 +23,16 @@ const Dash = () => {
       setIsModalOpen(false);
     };
   
-    const handleAcceptRequest = () => {
-      // Implement your logic for accepting the request
+    const handleAcceptRequest = async() => {
+      try {
+        const response = await acceptCustomer(selectedUserData[0]);
+        console.log(response);
+        
+      } catch (error) {
+        console.error(error);
+        
+      }
+      
       handleCloseModal();
     };
   
@@ -29,6 +40,111 @@ const Dash = () => {
       // Implement your logic for rejecting the request
       handleCloseModal();
     };
+
+    const [custData, setData] = useState([]);
+    const [buttonName, setButtonName] = useState('Verify PAN');
+    const [btn_class, setBtnClass] = useState('btn btn-primary');
+
+    useEffect(() => {
+        const fetchData = async () => {
+          const data = await getKyCRequests();
+          setData(data);
+        };
+        fetchData();
+
+    }, []);
+
+    const pendingRequests = custData.filter((customer) => customer.isVerified === 'false');
+    const verifiedRequests = custData.filter((customer) => customer.isVerified === 'true');
+
+    console.log(pendingRequests);
+
+    const getUserAadhaar = (user) => {
+      const aadhaar = user.customerData.split(',')[0];
+      return aadhaar;
+    };
+
+    const getPanNumber = (user) => {
+      const pan = user.customerData.split(',')[1];
+      return pan;
+    };
+
+    const getAge = (user) => {
+      const age = user.customerData.split(',')[2];
+      return age;
+    }
+
+    const getGender = (user) => {
+      const gender = user.customerData.split(',')[3];
+      return gender;
+    }
+
+    const getPincode = (user) => {
+      const pincode = user.customerData.split(',')[4];
+      return pincode;
+    }
+
+    const getAddress = (user) => {
+      const address = `${user.customerData.split(',')[5]}, ${user.customerData.split(',')[6]}`
+      return address;
+    }
+
+    const getCreditScore = (user) => {
+      const creditScore = user.customerData.split(',')[8];
+      return creditScore;
+    }
+
+    const getProfileImage = (user) => {
+      const image = user.customerData.split(',')[9];
+      return image;
+    };
+
+    const getEmail = (user) => {
+      const email = user.customerEmail;
+      return email;
+    }
+
+    const verifyPan = async (user) => {
+      const pan = getPanNumber(user);
+      const aadhaar = getUserAadhaar(user);
+      const age = getAge(user);
+      const name = user.customerName;
+
+      console.log(pan);
+
+      const options = {
+        method: 'POST',
+        url: 'https://pan-card-verification1.p.rapidapi.com/v3/tasks/sync/verify_with_source/ind_pan',
+        headers: {
+          'content-type': 'application/json',
+          'X-RapidAPI-Key': '6a6f7b1dd8msh69cbfd46add8f4bp1b47e2jsnca59faac468d',
+          'X-RapidAPI-Host': 'pan-card-verification1.p.rapidapi.com'
+        },
+        data: {
+          task_id: '74f4c926-250c-43ca-9c53-453e87ceacd1',
+          group_id: '8e16424a-58fc-4ba4-ab20-5bc8e7c3c41e',
+          data: {
+            id_number: `${pan}`,
+          }
+        }
+      };
+      
+      try {
+        const response = await axios.request(options);
+        setBtnClass('btn btn-success');
+        setButtonName('Verified');
+        console.log(response.data);
+
+      } catch (error) {
+        setBtnClass('btn btn-danger');
+        setButtonName('Verification Failed');
+        console.error(error);
+      }
+
+    };
+
+
+
 
   return (
     <Fragment>
@@ -39,14 +155,14 @@ const Dash = () => {
             {/* KYC Requests Card */}
             <div className={`white-glassmorphism p-6 flex-1 mr-4`}>
               <h2 className="text-xl font-bold mb-4 text-white">KYC Requests</h2>
-              <p className="text-white mb-2">Number of KYC Requests: 100</p>
+              <p className="text-white mb-2">Number of KYC Requests: {pendingRequests.length}</p>
               {/* Add more details or data as needed */}
             </div>
 
             {/* Registered Users Card */}
             <div className={`eth-card p-6 flex-1 ml-4`}>
               <h2 className="text-xl font-bold mb-4 text-white">Registered Users</h2>
-              <p className="text-white mb-2">Number of Registered Users: 500</p>
+              <p className="text-white mb-2">Number of Registered Users: {verifiedRequests.length}</p>
               {/* Add more details or data as needed */}
             </div>
           </section>
@@ -80,30 +196,51 @@ const Dash = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* Add table data based on showRequests state */}
-                {showRequests ? (
-                  <tr>
-                    <td className="py-2 px-4 border text-white">1</td>
-                    <td className="py-2 px-4 border text-white">John Doe</td>
-                    <td className="py-2 px-4 border text-white">
-                      <Button variant="contained" color="primary" onClick={()=>handleViewClick({id:1,name:"John Doe"})} >
-                        View
-                      </Button>
-                    </td>
-                    {/* Add more table data as needed */}
-                  </tr>
-                ) : (
-                  <tr>
-                    <td className="py-2 px-4 border text-white ">101</td>
-                    <td className="py-2 px-4 border text-white ">Jane Smith</td>
-                    <td className="py-2 px-4 border text-white ">
-                      <Button variant="contained" color="primary" onClick={() => handleViewClick({ id: 101, name: 'Jane Smith' })}>
-                        View
-                      </Button>
-                    </td>
-                    {/* Add more table data as needed */}
-                  </tr>
-                )}
+                {/* map pending requests */}
+                {showRequests &&
+                  pendingRequests.map((user) => (
+                    <tr key={user[0]}>
+                      <td className="py-2 px-4 border text-white">{user[0]}</td>
+                      <td className="py-2 px-4 border text-white">{user.customerName}</td>
+                      <td className="py-2 px-4 border">
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() => handleViewClick(user)}
+                        >
+                          View
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+
+                {/* map verified requests */}
+                {!showRequests &&
+                  verifiedRequests.map((user) => (
+                    <tr key={user.id}>
+                      <td className="py-2 px-4 border text-white">{user[0]}</td>
+                      <td className="py-2 px-4 border text-white">{user.customerName}</td>
+                      <td className="py-2 px-4 border">
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() => handleViewClick(user)}
+                        >
+                          View
+                        </Button>
+                        {/* // Add balance button */}
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          style={{ marginLeft: '10px' }}
+                        >
+                          ADD BALANCE
+                        </Button>
+
+
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </section>
@@ -117,13 +254,48 @@ const Dash = () => {
                   <TableBody>
                     <TableRow>
                       <TableCell className="modal-label">User ID:</TableCell>
-                      <TableCell>{selectedUserData.id}</TableCell>
+                      <TableCell>{selectedUserData[0]}</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell className="modal-label">Name:</TableCell>
-                      <TableCell>{selectedUserData.name}</TableCell>
+                      <TableCell>{selectedUserData.customerName}</TableCell>
                     </TableRow>
-                    {/* Add more user data fields as needed */}
+                    <TableRow>
+                      <TableCell className="modal-label">Email:</TableCell>
+                      <TableCell>{getEmail(selectedUserData)}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="modal-label">Aadhar Number</TableCell>
+                      <TableCell>{getUserAadhaar(selectedUserData)}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="modal-label">PAN Number</TableCell>
+                      <TableCell>{getPanNumber(selectedUserData)}</TableCell>
+                      <TableCell>
+                        <button
+                          className= {`${btn_class}`}
+                          onClick={() => verifyPan(selectedUserData)}
+                        >
+                          {buttonName}
+                        </button>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="modal-label">Age</TableCell>
+                      <TableCell>{getAge(selectedUserData)}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className = "modal-label" >Gender</TableCell>
+                      <TableCell>{getGender(selectedUserData)}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className = "modal-label" >Pincode</TableCell>
+                      <TableCell>{getPincode(selectedUserData)}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className = "modal-label" >Address</TableCell>
+                      <TableCell>{getAddress(selectedUserData)}</TableCell>
+                    </TableRow>
                   </TableBody>
                 </Table>
               </TableContainer>
@@ -135,7 +307,9 @@ const Dash = () => {
                 <Button onClick={handleRejectRequest} color="secondary">
                   Reject
                 </Button>
-                <Button onClick={handleAcceptRequest} color="primary">
+                <Button onClick={handleAcceptRequest} color="primary"
+                 
+                >
                   Accept
                 </Button>
               </div>

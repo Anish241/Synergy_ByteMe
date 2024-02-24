@@ -35,4 +35,33 @@ const BankLogin = async () => {
     }
 };
 
-export {createBank,BankLogin}
+const getKyCRequests = async () => {
+    try {
+        const tx = await kycContract.getCustomersinABank(provider.getSigner().getAddress());
+        console.log(tx);
+        return tx;
+        
+    } catch (error) {
+        console.error(error);
+        return false;
+
+        
+    }
+};
+
+const addBalance = async (address,balance) => {
+    try {
+        const tx = await kycContract.updateBalace(address,balance);
+        await tx.wait();
+        return true;
+        
+    } catch (error) {
+        console.error(error);
+        return false;
+
+        
+    }
+
+}
+
+export {createBank,BankLogin,getKyCRequests,addBalance}

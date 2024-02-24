@@ -82,3 +82,28 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ------------------------------------classes-------------------------------- */
+
+.coverfullscreen{
+    height: 100vh;
+}
+
+.backgroundcol-black{
+    background-color: lavender;
+}
+
+.standardFont{
+    font-family:'Montserrat';
+}
+
+.centerflex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-col{
+    flex-direction: column;
+    justify-content:space-around;
+}

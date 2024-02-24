@@ -1,5 +1,5 @@
 import React from "react";
-import UserCard from "./userDetail"; // Adjust the import path accordingly
+import UserCard from "./UserDetail"; // Adjust the import path accordingly
 
 const UserDetailCard = () => {
   return (

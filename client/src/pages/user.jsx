@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { UserTable, UserModal } from "../components";
 import { Navbar, Footer } from "../components";
 import { Button } from "@mui/material";
-import Usercard from "../components/user/userCard";
-import DetailCard from "../components/user/userDetailCard";
+import Usercard from "../components/user/UserCard";
+import DetailCard from "../components/user/UserDetailCard";
 
 export default function User() {
   const sampleTransactions = [

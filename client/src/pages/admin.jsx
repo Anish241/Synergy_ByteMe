@@ -2,7 +2,7 @@ import React,{useState} from "react";
 // import { Navbar, Footer } from "../components";
 import { AdminTable,Dashboard, AdminTableNavbar } from "../components";
 import { useEffect } from "react";
-import {getRequestedBanks,getNoofRegisteredBanks,getBankRequestCount,getRegisteredBanks} from "../api/Admin.js"
+import {getRequestedBanks,getRegisteredBanks} from "../api/Admin.js"
 
 //Expected bank data to be passed to table
 

@@ -1,9 +1,8 @@
 import React,{useState} from "react";
 // import { Navbar, Footer } from "../components";
-import { AdminTable,Dashboard, AdminTableNavbar } from "../components";
+import { AdminTable,Dashboard, AdminTableNavbar, Navbar, Footer } from "../components";
 import { useEffect } from "react";
 import {getRequestedBanks,getNoofRegisteredBanks,getBankRequestCount,getRegisteredBanks} from "../api/Admin.js"
-
 //Expected bank data to be passed to table
 
 
@@ -75,11 +74,16 @@ export default function Admin(){
 
     return(
         <>
+        <Navbar/>
+        <div className="centerflex">
+
+        <h1 className="text-4xl text-white py-4 font-bold">User Dashboard</h1>
+        </div>
             <Dashboard
             totalCustoms={registered[0] === undefined?0:registered.length}
             pendingReq={pending[0] === undefined?0:pending.length}
             />
-            <div className="centerflex coverfullscreen backgroundcol-black flex-col">
+            <div className="centerflex py-40 gradient-bg-services flex-col">
                 <div>
                     <AdminTableNavbar 
                     setIsVerified={setIsVerified}
@@ -92,6 +96,7 @@ export default function Admin(){
                     />
                 </div>
             </div>
+            <Footer/>
         </>
         
     );

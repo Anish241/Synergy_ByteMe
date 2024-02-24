@@ -1,45 +1,31 @@
 import React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
 
 const CustomerCard = ({ totalCustomers }) => (
-  <Card>
-    <CardContent>
-      <Typography variant="h6" component="div">
-        Total Customers Registered
-      </Typography>
-      <Typography variant="h4" color="primary">
-        {totalCustomers}
-      </Typography>
-    </CardContent>
-  </Card>
+  <div className="max-w-md white-glassmorphism rounded-md overflow-hidden shadow-md">
+    <div className="p-6">
+      <h6 className="text-lg font-semibold text-white mb-2">Total Customers Registered</h6>
+      <h4 className="text-4xl text-primary">{totalCustomers}</h4>
+    </div>
+  </div>
 );
 
 const PendingRequestsCard = ({ pendingRequests }) => (
-  <Card>
-    <CardContent>
-      <Typography variant="h6" component="div">
-        Pending Requests
-      </Typography>
-      <Typography variant="h4" color="warning">
-        {pendingRequests}
-      </Typography>
-    </CardContent>
-  </Card>
+  <div className="max-w-md white-glassmorphism rounded-md overflow-hidden shadow-md">
+    <div className="p-6">
+      <h6 className="text-lg font-semibold text-white mb-2">Pending Requests</h6>
+      <h4 className="text-4xl text-warning">{pendingRequests}</h4>
+    </div>
+  </div>
 );
 
-const Dashboard = ({totalCustoms,pendingReq}) => {
+const Dashboard = ({ totalCustoms, pendingReq }) => {
   const totalCustomers = totalCustoms; // Replace with actual data
   const pendingRequests = pendingReq; // Replace with actual data
 
   return (
-    <div className='backgroundcol-black'>
-      <Box display="flex" gap={2} justifyContent={"space-around"} >
-        <CustomerCard totalCustomers={totalCustomers} />
-        <PendingRequestsCard pendingRequests={pendingRequests} />
-      </Box>
+    <div className="flex gap-8 justify-around">
+      <CustomerCard totalCustomers={totalCustomers} />
+      <PendingRequestsCard pendingRequests={pendingRequests} />
     </div>
   );
 };

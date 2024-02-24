@@ -2,16 +2,17 @@ import React from "react";
 import { BrowserRouter, Routes,Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import "./App.css";
-import { Home, Login } from "./pages";
-import Card from "./components/admin/adminCard";
+import { Admin, Home, Login } from "./pages";
+
 function App() {
 
   return (
     <AnimatePresence>
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Home/>}/>
+        <Route path="/login" element={<Login />} /> 
+        <Route path="/admin" element={<Admin />} /> 
       </Routes>
     </BrowserRouter>
     </AnimatePresence>

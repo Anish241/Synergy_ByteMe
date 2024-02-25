@@ -35,4 +35,6 @@ UserCard.propTypes = {
   image: PropTypes.string, // Image URL or path
 };
 
-export default UserCard;
+export default UserCard;  
+
+

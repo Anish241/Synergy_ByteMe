@@ -1,12 +1,10 @@
-import React,{useState} from 'react'
+import React from 'react'
 import { Navbar,Footer } from '../../components'
-import Typewriter from 'typewriter-effect';
+
 import illustration from "../../assets/illustration-intro.png";
-import curv from "../../assets/bg-curvy-desktop.svg";
-import curvmb from "../../assets/bg-curvy-mobile.svg";
+
 import { Fragment } from 'react';
-import { KYCABI,KYCAddress } from '../../middleware/constants';
-import { ethers } from "ethers"
+
 
 const PastCustomers = () => {
   return (

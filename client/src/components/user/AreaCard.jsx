@@ -6,7 +6,7 @@ import {
   Tooltip,
 } from "recharts";
 import React, { useState } from "react";
-import Modal from "react-modal";
+
 
 const AreaCard = ({ colors, percentFillValue, cardInfo }) => {
   const filledValue = (percentFillValue / 100) * 360; 

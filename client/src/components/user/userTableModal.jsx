@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button,Modal, Box, TextField} from "@mui/material";
-import "./data.json"
 import toast from "react-hot-toast";
 
 function CustomTextField(props){

@@ -1,7 +1,6 @@
 // Dash.js
 import React, { useState,useEffect } from 'react';
 import { Navbar, Footer } from '../../components';
-import illustration from '../../assets/illustration-intro.png';
 import { Fragment } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Switch, FormControlLabel, Table, TableBody, TableCell, TableContainer, TableRow, Paper } from '@mui/material';
 import './glassmorphicStyle.css';
@@ -9,7 +8,7 @@ import { getKyCRequests } from '../../api/Bank';
 import { acceptCustomer } from '../../api/Customer';
 import BalanceModal from './BalanceModal';
 import axios from 'axios';
-import toast from 'react-hot-toast';
+
 
 const Dash = () => {
     const [showRequests, setShowRequests] = useState(true);
@@ -91,15 +90,7 @@ const Dash = () => {
       return address;
     }
 
-    const getCreditScore = (user) => {
-      const creditScore = user.customerData.split(',')[8];
-      return creditScore;
-    }
-
-    const getProfileImage = (user) => {
-      const image = user.customerData.split(',')[9];
-      return image;
-    };
+    
 
     const getEmail = (user) => {
       const email = user.customerEmail;
@@ -108,9 +99,6 @@ const Dash = () => {
 
     const verifyPan = async (user) => {
       const pan = getPanNumber(user);
-      const aadhaar = getUserAadhaar(user);
-      const age = getAge(user);
-      const name = user.customerName;
 
       console.log(pan);
 

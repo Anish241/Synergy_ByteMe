@@ -16,15 +16,20 @@ const Navbar = () => {
   return (
     <div className="gradient-bg-welcome">
       <nav className="w-full flex md:justify-center justify-between items-center p-4">
-        <div className="md:flex-[0.5] flex-initial justify-center items-center">
+        <div className="md:flex-[0.5] flex-initial justify-center items-center
+        "
+         onClick={()=>{
+          window.location.href = "/"
+         }}
+         style={{cursor:"pointer"}}
+        >
           <img src={logo} alt="logo" className="w-32 cursor-pointer" />
         </div>
         <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
           {[
-            { title: "Market", path: "/market" },
-            { title: "Exchange", path: "/exchange" },
-            { title: "Tutorials", path: "/tutorials" },
-            { title: "Wallets", path: "/wallets" },
+            { title: "Admin Panel", path: "/login" },
+            { title: "Bank Panel", path: "/banklogin" },
+            { title: "Customer Panel", path: "/userlogin" },
           ].map((item, index) => (
             <NavBarItem
               key={item.title + index}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { UserTable, UserModal, UserCard } from "../components";
+import { UserTable, UserModal} from "../components";
 import { Navbar, Footer } from "../components";
 import { Button } from "@mui/material";
 import DetailCard from "../components/user/UserDetailCard";
@@ -7,26 +7,7 @@ import AreaCards from "../components/user/UerCard";
 
 
 export default function User() {
-  const sampleTransactions = [
-    {
-      id: 1,
-      to: "Anish",
-      from: "Bodhi",
-      amount: 5000,
-    },
-    {
-      id: 2,
-      to: "Shubham",
-      from: "Anish",
-      amount: 2500,
-    },
-    {
-      id: 3,
-      to: "Bodhi",
-      from: "Shubham",
-      amount: 100,
-    },
-  ];
+
 
   // Modal open and close state handling
   const [open, setOpen] = useState(false);

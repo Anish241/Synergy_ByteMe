@@ -1,5 +1,6 @@
 import { KYCABI,KYCAddress } from "../middleware/constants.js";
 import { ethers } from "ethers"
+import toast from "react-hot-toast";
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 
@@ -11,11 +12,18 @@ const verify = async (password) => {
         const isAdmin = await kycContract.compareAdminAddress(provider.getSigner().getAddress());
     
         console.log(isPass,isAdmin);
+
         if(isPass && isAdmin){
             return true;
         }
         else{
-            return false
+            if (!isPass) {
+                toast.error("Password is incorrect");
+            }
+            if (!isAdmin) {
+                toast.error("You are not an admin");
+            }
+            return false;
         }
     
     } catch (error) {

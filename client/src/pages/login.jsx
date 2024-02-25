@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Card, CardContent, CardActions, TextField, Typography, Button } from '@mui/material';
 import { verify } from "../api/Login";
-import toast from "react-hot-toast";
+
 
 export default function Login() {
 
@@ -34,9 +34,7 @@ export default function Login() {
     if (isVerified) {
       window.location.href = "/admin";
     }
-    else {
-      toast.error("Invalid Password");
-    }
+ 
 
   }
 
@@ -46,7 +44,7 @@ export default function Login() {
         <Card elevation={5} className="centerflex flex-col" sx={cardStyle}>
           <CardContent>
             <Typography variant="h3" className="centerflex">
-              Login
+              Krypt Admin Login
             </Typography>
           </CardContent>
 

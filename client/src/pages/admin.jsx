@@ -10,7 +10,7 @@ import {getRequestedBanks,getRegisteredBanks} from "../api/Admin.js"
 
 export default function Admin(){
 
-    const shortenAddress = (address) => `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
+    
 
     const [requestedBanks,setRequestedBanks] = useState([]);
     const [registeredBanks,setRegisteredBanks] = useState([]);
@@ -58,9 +58,9 @@ export default function Admin(){
     }
 
     var pending = []
-    for (var i = 0; i < pendings.length; i++) {
-        if (pendings[i] !== undefined && pendings[i].bankName!=='') {
-            pending.push(pendings[i]);
+    for (var j = 0; j < pendings.length; j++) {
+        if (pendings[j] !== undefined && pendings[j].bankName!=='') {
+            pending.push(pendings[j]);
         }
     }
 
@@ -77,7 +77,7 @@ export default function Admin(){
         <Navbar/>
         <div className="centerflex">
 
-        <h1 className="text-4xl text-white py-4 font-bold">User Dashboard</h1>
+        <h1 className="text-4xl text-white py-4 font-bold">Admin Dashboard</h1>
         </div>
             <Dashboard
             totalCustoms={registered[0] === undefined?0:registered.length}

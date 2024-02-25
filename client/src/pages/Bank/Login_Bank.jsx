@@ -1,7 +1,6 @@
 import React from 'react'
 import { Navbar,Footer } from '../../components'
-import { useState,useEffect } from "react";
-import illustration from "../../assets/illustration-intro.png";
+import { useEffect } from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { BankLogin } from '../../api/Bank';
 

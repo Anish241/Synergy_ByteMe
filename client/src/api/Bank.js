@@ -1,5 +1,7 @@
+import toast from "react-hot-toast";
 import { KYCABI,KYCAddress } from "../middleware/constants.js";
 import { ethers } from "ethers"
+
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 
@@ -52,6 +54,7 @@ const addBalance = async (address,balance) => {
     try {
         const tx = await kycContract.updateBalace(address,balance);
         await tx.wait();
+        toast.success("Balance updated");
         return true;
         
     } catch (error) {

@@ -2,7 +2,6 @@ import AreaCard from "./AreaCard";
 import "./userCard.scss";
 
 const AreaCards = () => {
-  const data = JSON.parse(localStorage.getItem("customer"));
 
   return (
     <section className="content-area-cards ">

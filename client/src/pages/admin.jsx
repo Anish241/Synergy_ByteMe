@@ -15,23 +15,23 @@ export default function Admin(){
     const [requestedBanks,setRequestedBanks] = useState([]);
     const [registeredBanks,setRegisteredBanks] = useState([]);
 
-    // useEffect(() => {
-    //     const fetchRequestedBanks = async () => {
-    //         const data = await getRequestedBanks();
-    //         console.log(data);
-    //         setRequestedBanks(data);
-    //     }
+    useEffect(() => {
+        const fetchRequestedBanks = async () => {
+            const data = await getRequestedBanks();
+            console.log(data);
+            setRequestedBanks(data);
+        }
 
 
-    //     const fetchRegisteredBanks = async () => {
-    //         const data = await getRegisteredBanks();
-    //         setRegisteredBanks(data);
-    //     }
+        const fetchRegisteredBanks = async () => {
+            const data = await getRegisteredBanks();
+            setRegisteredBanks(data);
+        }
 
-    //     fetchRequestedBanks();
-    //     fetchRegisteredBanks();
+        fetchRequestedBanks();
+        fetchRegisteredBanks();
 
-    // },[]);
+    },[]);
 
     var registereds  = registeredBanks.map((bank) => {
         return {

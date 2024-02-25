@@ -30,6 +30,8 @@ const Navbar = () => {
             { title: "Admin Panel", path: "/login" },
             { title: "Bank Panel", path: "/banklogin" },
             { title: "Customer Panel", path: "/userlogin" },
+            {title:"Bank Request",path:"/bankform"},
+            {title:"Customer Registration",path:"/customerreg"}
           ].map((item, index) => (
             <NavBarItem
               key={item.title + index}
@@ -37,9 +39,6 @@ const Navbar = () => {
               path={item.path}
             />
           ))}
-          <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
-            <Link to="/login">Login</Link>
-          </li>
         </ul>
         <div className="flex relative">
           {!toggleMenu && (

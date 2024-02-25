@@ -5,9 +5,10 @@ import { Fragment } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Switch, FormControlLabel, Table, TableBody, TableCell, TableContainer, TableRow, Paper } from '@mui/material';
 import './glassmorphicStyle.css';
 import { getKyCRequests } from '../../api/Bank';
-import { acceptCustomer } from '../../api/Customer';
+import { acceptCustomer,rejectCustomer } from '../../api/Customer';
 import BalanceModal from './BalanceModal';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 
 const Dash = () => {
@@ -37,8 +38,16 @@ const Dash = () => {
       handleCloseModal();
     };
   
-    const handleRejectRequest = () => {
-      // Implement your logic for rejecting the request
+    const handleRejectRequest = async() => {
+      try {
+        const response = await rejectCustomer(selectedUserData[0]);
+        toast.success("Customer rejected successfully");
+        
+      } catch (error) {
+        toast.error("Error rejecting customer");
+
+        
+      }
       handleCloseModal();
     };
 

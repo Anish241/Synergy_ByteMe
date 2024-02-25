@@ -1,7 +1,9 @@
 import React, { useState,useEffect } from "react";
-import { Box, TextField, Button, Paper, Stack, Typography, Select, MenuItem } from "@mui/material";
+import { Box, TextField, Button, Paper, Stack, Typography, Select, MenuItem,InputLabel } from "@mui/material";
 import { getBanks,createCustomer } from "../api/Customer.js";
 import postToInfura from "../api/postToInfura.js";
+import {Navbar,Footer} from "../components";
+import { Fragment } from 'react';
 
 export default function CustomerRegistration(){
 
@@ -77,12 +79,41 @@ export default function CustomerRegistration(){
     }
 
     const style = {
-        minWidth:"40rem",
-        minHeight:"40rem",
-    }
+        minWidth: "40rem",
+        minHeight: "40rem",
+        padding: "2rem",
+        boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+        borderRadius: "8px",
+        // background: "#2c3e50",
+        // color: "#ecf0f1",
+    };
+
+    const inputStyle = {
+        color: "white",
+        borderColor: "#ecf0f1",
+    
+    };
+
+    const dropdownStyle = {
+        color: "#ecf0f1",
+        borderColor: "#ecf0f1",
+        minWidth: "100%", // Make the dropdown wider
+    };
+
+    const submitButtonStyle = {
+        background: "#3498db",
+        color: "#ecf0f1",
+        padding: "10px 20px", // Add padding to the submit button
+        marginTop: "1rem", // Add space between the last field and the submit button
+    };
     console.log(formJson)
     return(
-        <div className="coverfullscreen centerflex backgroundcol-black">
+      
+        <Fragment>
+             <div className="min-h-screen">
+            <Navbar />
+            <main className="p-8 relative gradient-bg-services ">
+            <div className="coverfullscreen centerflex gradient-bg-services">
             <form onSubmit={handleSubmit} method="post">
                 <Box sx={style} className="centerflex flex-col" component={Paper} >
                     <Typography variant={"h3"} sx={{margin:"1rem"}}>Customer sign-Up</Typography>
@@ -90,18 +121,28 @@ export default function CustomerRegistration(){
                         <TextField
                         required
                         label="Full name"
+                        style={{
+                            color: "white",
+                            borderColor: "#ecf0f1",
+                            label:{
+                                color:"white"
+                            
+                            }
+                        }}
                         />
 
                         <TextField
                         required
                         type="email"
                         label="Email"
+                        sx = {inputStyle}
                         />
 
                         <TextField
                         required
                         type="Password"
                         label="Password"
+                        sx = {inputStyle}
                         />
                     </Stack>
                     
@@ -114,11 +155,13 @@ export default function CustomerRegistration(){
                         <TextField
                         required
                         label="Aadhar number"
+                        sx={inputStyle}
                         />
 
                         <TextField
                         required
                         label="Pan card number"
+                        sx={inputStyle}
                         />
                     </Stack>
                         
@@ -127,11 +170,13 @@ export default function CustomerRegistration(){
                         required
                         type="number"
                         label="Age"
+                        sx = {inputStyle}
                         />
 
                         <TextField
                         required
                         label="Gender"
+                        sx = {inputStyle}
                         />
                     </Stack>
                     
@@ -140,28 +185,35 @@ export default function CustomerRegistration(){
                         required
                         type="number"
                         label="Pincode"
+                        sx = {inputStyle}
                         />
 
                         <TextField
                         required
                         label="City"
+                        sx = {inputStyle}
                         />
 
                         <TextField
                         required
                         label="State"
+                        sx = {inputStyle}
                         />
                     </Stack>
 
                     <TextField
                     required
                     label="Credit score"
+                    sx = {inputStyle}
                     />
-                    <Select
+             <InputLabel htmlFor="bank" sx={{ color: "#ecf0f1", marginBottom: "0.5rem" }}>Select Bank</InputLabel>
+            <Select
             required
             label="Bank"
             value={formJson.bank || ""}
             onChange={(e) => setFormJson({ ...formJson, bank: e.target.value })}
+            sx={dropdownStyle}
+            placeholder="Select a bank"
           >
             {banks.map((bank) => (
               <MenuItem key={bank[0]} value={bank[0]}>
@@ -169,9 +221,18 @@ export default function CustomerRegistration(){
               </MenuItem>
             ))}
             </Select>
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit"
+                     className="btn-primary"
+                     sx={submitButtonStyle}
+                    >Submit</Button>
                 </Box>
             </form>
         </div>
+            </main>
+            <Footer />
+             </div>
+        </Fragment>
+
+
     )
 };

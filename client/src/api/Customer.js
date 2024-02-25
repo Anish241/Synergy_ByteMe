@@ -79,9 +79,24 @@ const acceptCustomer = async (customerAddress) => {
     }
 };
 
+const rejectCustomer = async (customerAddress) => {
+    try {
+        const tx = await kycContract.rejectCustomer(customerAddress);
+        await tx.wait();
+        toast.success("Customer rejected successfully");
+        return true;
+        
+    } catch (error) {
+        toast.error("Error rejecting customer");
+        return false;
+        
+    }
+};
+
 export {
     getBanks,
     createCustomer,
     getCustDetails,
-    acceptCustomer
+    acceptCustomer,
+    rejectCustomer
 }

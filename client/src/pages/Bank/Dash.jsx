@@ -52,19 +52,7 @@ const Dash = () => {
           const data = await getKyCRequests();
           setData(data);
         };
-        try {
-          fetchData();
-          if (custData.length === 0) {
-            toast.error('No data found');
-            window.location.href = '/';
-          }
-          
-        } catch (error) {
-          console.error(error);
-          toast.error('Error fetching data');
-          
-          
-        }
+        fetchData();
 
     }, []);
 
@@ -252,7 +240,7 @@ const Dash = () => {
                         >
                           ADD BALANCE
                         </Button>
-                        <BalanceModal open={modalOpen} handleClose={()=>setModalOpen(false)}/>
+                        <BalanceModal open={modalOpen} handleClose={()=>setModalOpen(false)} address={user[0]}/>
 
                       </td>
                     </tr>

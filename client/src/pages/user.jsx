@@ -3,6 +3,8 @@ import { UserTable, UserModal, UserCard } from "../components";
 import { Navbar, Footer } from "../components";
 import { Button } from "@mui/material";
 import DetailCard from "../components/user/UserDetailCard";
+import AreaCards from "../components/user/UerCard";
+
 
 export default function User() {
   const sampleTransactions = [
@@ -41,7 +43,7 @@ export default function User() {
           className="grid grid-cols-1 md:grid-cols-2"
         >
           <div>
-            <UserCard />
+            <AreaCards />
           </div>
           <div>
             <DetailCard />
@@ -54,7 +56,7 @@ export default function User() {
           </div>
           <UserModal open={open} handleClose={handleClose} />
           <div>
-          <UserTable transactions={sampleTransactions} />
+          <UserTable transactions={JSON.parse(localStorage.getItem("transactions")) || []} />
         </div>
       </div>
       <Footer />

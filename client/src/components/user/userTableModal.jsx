@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Button,Modal, Box, TextField} from "@mui/material";
+import "./data.json"
+import toast from "react-hot-toast";
 
 function CustomTextField(props){
     
@@ -32,15 +34,28 @@ export default function UserModal(props){
         justifyContent:"center"
       };
 
-    const submitTransaction = (event) =>{
-        console.log(event.target.value);
-        window.location.reload();
+    const submitTransaction = async (event) =>{
+        event.preventDefault();
+        const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+        const newTransaction = {
+            id: transactions.length+1,
+            to: to,
+            from: from,
+            amount: amt
+        }
+        transactions.push(newTransaction);
+        localStorage.setItem("transactions",JSON.stringify(transactions));
+        toast.success("Transaction added successfully");
+
+
     }
+
+    // [{}]
 
     //Handling state change in modal input fields as form control is not possible as of now in modals
     const [to, setTo] = useState("");
-    const [from, setFrom] = useState("");
     const [amt, setAmt] = useState(0);
+    const [from, setFrom] = useState("");
 
     return(
         <Modal

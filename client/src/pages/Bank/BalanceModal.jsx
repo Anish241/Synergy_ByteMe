@@ -1,5 +1,6 @@
-import React from "react";
+import React,{useState} from "react";
 import { Box, Modal,Button, TextField } from "@mui/material";
+import { addBalance } from "../../api/Bank";
 
 export default function BalanceModal(props){
     const style = {
@@ -16,6 +17,16 @@ export default function BalanceModal(props){
         justifyContent:"center"
     };
 
+    const handleSubmit = async() => {
+        const res = await addBalance(props.address,balance);
+        if(res){
+            props.handleClose();
+        }
+    }
+
+    const [balance,setBalance] = useState("0");
+
+
     return(
         <Modal 
         open={props.open}
@@ -28,8 +39,11 @@ export default function BalanceModal(props){
                 <TextField
                 required
                 label="Balance"
+                onChange={(e) => setBalance(e.target.value)}
                 />
-                <Button>Submit</Button>
+                <Button
+                 onClick={handleSubmit}
+                >Submit</Button>
             </Box>
         </Modal>
     )

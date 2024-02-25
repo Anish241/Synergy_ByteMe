@@ -22,8 +22,7 @@ const createBank = async (bankName,regNo) => {
 const BankLogin = async () => {
     try {
         const tx = await kycContract.bankLogin(provider.getSigner().getAddress());
-        console.log(tx);
-        localStorage.setItem("bank",tx);
+        window.location.href = "/bankdash"
         return true;
         
     } catch (error) {

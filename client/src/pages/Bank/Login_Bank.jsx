@@ -35,7 +35,7 @@ const Login_Bank = () => {
                 async () => {
                   const res = await BankLogin();
                   if(res){
-                    window.location.href = "/bank/dash";
+                    window.location.href = "/bankdash";
                   }
                 }
               }

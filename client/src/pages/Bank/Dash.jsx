@@ -8,6 +8,7 @@ import './glassmorphicStyle.css';
 import { getKyCRequests } from '../../api/Bank';
 import { acceptCustomer } from '../../api/Customer';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Dash = () => {
     const [showRequests, setShowRequests] = useState(true);
@@ -50,7 +51,19 @@ const Dash = () => {
           const data = await getKyCRequests();
           setData(data);
         };
-        fetchData();
+        try {
+          fetchData();
+          if (custData.length === 0) {
+            toast.error('No data found');
+            window.location.href = '/';
+          }
+          
+        } catch (error) {
+          console.error(error);
+          toast.error('Error fetching data');
+          
+          
+        }
 
     }, []);
 

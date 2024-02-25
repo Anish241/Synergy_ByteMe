@@ -1,6 +1,7 @@
 # Synergy-DJSCE
 Decentralized KYC verification 
-Deployed Link: [text](https://synergy-byte-me-vercel.vercel.app/)
+Deployed Link: [Click here to view the live app](https://synergy-byte-me-vercel.vercel.app/)
+**Please view this on brave browser or metamask enabled browser only.**
 ## Problem Statement
 KYC (Know Your Customer) is a process of verifying the identity of the customers. It is a legal requirement for all financial institutions and other regulated entities to verify the identity of their customers before providing services. The current KYC process is centralized and is prone to data breaches and identity theft. The centralized KYC process is also time-consuming and costly. The objective of this project is to develop a decentralized KYC verification system using blockchain technology. The decentralized KYC verification system will provide a secure, cost-effective, and efficient way to verify the identity of the customers. The decentralized KYC verification system will also provide a secure way to share the customer’s identity information between different financial institutions and other regulated entities.
 ---

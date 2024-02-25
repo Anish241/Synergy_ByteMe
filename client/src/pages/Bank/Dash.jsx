@@ -7,6 +7,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Switch, Form
 import './glassmorphicStyle.css';
 import { getKyCRequests } from '../../api/Bank';
 import { acceptCustomer } from '../../api/Customer';
+import BalanceModal from './BalanceModal';
 import axios from 'axios';
 
 const Dash = () => {
@@ -144,6 +145,7 @@ const Dash = () => {
     };
 
 
+  const[modalOpen,setModalOpen] = useState(false);
 
 
   return (
@@ -233,10 +235,11 @@ const Dash = () => {
                           variant="contained"
                           color="primary"
                           style={{ marginLeft: '10px' }}
+                          onClick={() => setModalOpen(true)}
                         >
                           ADD BALANCE
                         </Button>
-
+                        <BalanceModal open={modalOpen} handleClose={()=>setModalOpen(false)}/>
 
                       </td>
                     </tr>
